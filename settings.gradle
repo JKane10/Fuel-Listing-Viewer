@@ -1,0 +1,2 @@
+rootProject.name='Fuel Entry Viewer'
+include ':app'

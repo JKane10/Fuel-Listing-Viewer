@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Fuel Entry Viewer</string>
+    <string name="tab_title_list">Fuel List</string>
+    <string name="tab_title_map">Map</string>
+
+    <!-- fuel list strings -->
+    <string name="cost_label">Cost: </string>
+    <string name="cost_per_mile_label">Cost per mile: </string>
+    <string name="gallons_label">Gallons: </string>
+    <string name="fuel_type_label">Fuel type: </string>
+    <string name="price_per_gallon_label">Price per gallon: </string>
+    <string name="vendor_label">Vendor: </string>
+    <string name="reference_label">Reference: </string>
+
+</resources>

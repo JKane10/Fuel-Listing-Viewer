@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/fuel_list">
+
+    <fragment
+        android:id="@+id/fuel_list"
+        android:name="com.jkane.fuelmap.ui.fuel_entries.fuel_list.FuelListFragment"
+        android:label="@string/tab_title_list"
+        tools:layout="@layout/fragment_fuel_list" />
+
+    <fragment
+        android:id="@+id/fuel_map"
+        android:name="com.jkane.fuelmap.ui.fuel_entries.fuel_map.FuelMapFragment"
+        android:label="@string/tab_title_map"
+        tools:layout="@layout/fragment_fuel_map" />
+</navigation>

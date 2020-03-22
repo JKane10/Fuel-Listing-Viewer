@@ -1,0 +1,124 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+/**
+ * Load keystore - This is to keep keys out of source control.
+ * Keystore needs to have the following properties defined.
+ *
+ * AUTH_KEY - See https://developer.fleetio.com/docs/getting-started
+ * ACCOUNT_TOKEN - See https://developer.fleetio.com/docs/getting-started
+ * GOOGLE_MAPS_KEY - See https://developers.google.com/maps/documentation/javascript/get-api-key
+ */
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.jkane.fuelmap"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField('String', 'BASE_URL', '"https://secure.fleetio.com/api/"')
+            buildConfigField('String', 'AUTH_KEY', keystoreProperties.getProperty("AUTH_KEY"))
+            buildConfigField('String', 'ACCOUNT_TOKEN', keystoreProperties.getProperty("ACCOUNT_TOKEN"))
+            resValue "string", "GOOGLE_MAPS_KEY", keystoreProperties.getProperty("GOOGLE_MAPS_KEY")
+        }
+        release {
+            buildConfigField('String', 'BASE_URL', '"https://secure.fleetio.com/api/"')
+            buildConfigField('String', 'AUTH_KEY', keystoreProperties.getProperty("AUTH_KEY"))
+            buildConfigField('String', 'ACCOUNT_TOKEN', keystoreProperties.getProperty("ACCOUNT_TOKEN"))
+            resValue('string', 'GOOGLE_MAPS_KEY', keystoreProperties.getProperty("GOOGLE_MAPS_KEY"))
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+// To inline the bytecode built with JVM target 1.8 into
+// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+dependencies {
+
+    //Default AS Boilerplate dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Retrofit dependencies for network calls
+    // https://square.github.io/retrofit/
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // RxJava dependencies for rx functionality
+    // https://github.com/ReactiveX/RxJava or http://reactivex.io/
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    // Chuck dependencies for HTTP inspection
+    // https://github.com/jgilfelt/chuck
+    debugImplementation "com.readystatesoftware.chuck:library:$chuck_version"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuck_version"
+
+    // Dagger dependencies for dependency injection
+    // https://github.com/google/dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Glide dependencies for image loading
+    // https://github.com/bumptech/glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Google Maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    // Stetho dependencies for debugging
+    // https://github.com/facebook/stetho
+    implementation "com.facebook.stetho:stetho:$stetho_version"
+
+    // Testing dependencies
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:1.+"
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestUtil 'androidx.test:orchestrator:1.2.0'
+}

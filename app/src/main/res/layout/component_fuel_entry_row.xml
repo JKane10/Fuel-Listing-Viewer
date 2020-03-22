@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin">
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_local_gas_station_24px" />
+
+    <TextView
+        android:id="@+id/vehicle_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/imgView"
+        app:layout_constraintRight_toLeftOf="@id/date"
+        app:layout_constraintTop_toTopOf="@id/imgView"
+        tools:text="Vehicle name" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgView"
+        android:gravity="right"
+        tools:text="date" />
+
+    <RelativeLayout
+        android:id="@+id/details_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/imgView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vehicle_name">
+
+        <TextView
+            android:id="@+id/cost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/cost_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cost_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/cost_label"
+            tools:text="Cost" />
+
+        <TextView
+            android:id="@+id/cost_per_mile_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cost_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/cost_per_mile_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cost_per_mile_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cost_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/cost_per_mile_label"
+            tools:text="0.0" />
+
+        <TextView
+            android:id="@+id/gallons_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cost_per_mile_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/gallons_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/gallons_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cost_per_mile_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/gallons_label"
+            tools:text="0.0" />
+
+        <TextView
+            android:id="@+id/fuel_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gallons_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/fuel_type_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fuel_type_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gallons_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/fuel_type_label"
+            tools:text="0.0" />
+
+        <TextView
+            android:id="@+id/price_per_gallon_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fuel_type_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/price_per_gallon_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/price_per_gallon_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fuel_type_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/price_per_gallon_label"
+            tools:text="0.0" />
+
+        <TextView
+            android:id="@+id/vendor_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_per_gallon_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/vendor_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/vendor_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_per_gallon_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/vendor_label"
+            tools:text="0.0" />
+
+        <TextView
+            android:id="@+id/reference_number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vendor_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/reference_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/reference_number_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vendor_label"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_toEndOf="@id/reference_number_label"
+            tools:text="0.0" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="#000000"
+        app:layout_constraintTop_toBottomOf="@id/details_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

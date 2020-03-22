@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fuel_list"
+        android:icon="@drawable/ic_local_gas_station_24px"
+        android:title="@string/tab_title_list" />
+
+    <item
+        android:id="@+id/fuel_map"
+        android:icon="@drawable/ic_map_24px"
+        android:title="@string/tab_title_map" />
+
+</menu>
